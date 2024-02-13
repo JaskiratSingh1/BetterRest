@@ -37,7 +37,14 @@ struct ContentView: View {
                 }
                 
                 Section("Daily coffee intake") {
-                    Stepper("^[\(coffeeAmount) cup](inflect: true)", value: $coffeeAmount, in: 0...20)
+                    //Stepper("^[\(coffeeAmount) cup](inflect: true)", value: $coffeeAmount, in: 0...20)
+                    Picker("^[\(coffeeAmount) cup](inflect: true)", selection: $coffeeAmount) {
+                        ForEach(0..<11) {
+                            Text("^[\($0) Cup](inflect: true)")
+                        }
+                    }
+                    .labelsHidden()
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
             .navigationTitle("BetterRest")
